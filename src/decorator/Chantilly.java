@@ -5,7 +5,7 @@
  */
 package decorator;
 
-import bebida.Bebida;
+import bebida.*;
 
 /**
  *

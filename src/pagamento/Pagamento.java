@@ -3,18 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package decorator;
-
-import bebida.*;
+package pagamento;
 
 /**
  *
  * @author leona
  */
-public abstract class Decoradores extends Bebida {
+public interface Pagamento {
 
-    private Bebida b;
-
-    @Override
-    public abstract String getNome();
+    public void Pàgar();
 }

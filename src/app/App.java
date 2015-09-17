@@ -5,10 +5,10 @@
  */
 package app;
 
-import bebida.Bebida;
-import bebida.Cafe;
-import decorator.Canela;
-import decorator.Chantilly;
+import bebida.*;
+import decorator.*;
+import pagamento.*;
+import pedido.*;
 
 /**
  *
@@ -22,21 +22,25 @@ public class App {
     public static void main(String[] args) {
         // TODO code application logic here
         Bebida cafe = new Cafe();
-        System.out.println("Dados Do Cafe");
-        System.out.println("Nome: " + cafe.getNome());
-        System.out.println("Custo: " + cafe.custo());
-
-        System.out.println("Adicionando Um Condimento");
         cafe = new Chantilly(cafe);
-        System.out.println("Novos Dados Do Cafe");
-        System.out.println("Nome: " + cafe.getNome());
-        System.out.println("Custo: " + cafe.custo());
-        
-        System.out.println("Adicionando Outro Condimento");
-        cafe = new Canela(cafe);
-        System.out.println("Novos Dados Do Cafe");
-        System.out.println("Nome: " + cafe.getNome());
-        System.out.println("Custo: " + cafe.custo());
+        Pagamento pagamento = new CartaoDeCredito();
+        Pedido p = new Pedido();
+
+        p.addItem(cafe);
+        System.out.println("O valor total é: " + p.caculaTotal());
+
+        System.out.println("fechando o pedido");
+        p.fecharPedido();
+        p.addItem(cafe);
+        System.out.println("O valor total é: " + p.caculaTotal());
+
+        System.out.println("abrindo o pedido");
+        p.abrirPedido();
+        p.addItem(cafe);
+        System.out.println("O valor total é: " + p.caculaTotal());
+
+        p.fecharPedido();
+        p.pagar(pagamento);
 
     }
 
