@@ -59,7 +59,7 @@ public class Pedido {
         return t;
     }
 
-    public float caculaTotal() {
+    public float calculaTotal() {
         float valorTotal = 0;
         for (Item item1 : item) {
             valorTotal += item1.custo();
