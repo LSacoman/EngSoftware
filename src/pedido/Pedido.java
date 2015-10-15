@@ -5,8 +5,9 @@
  */
 package pedido;
 
-import java.util.ArrayList;
 import bebida.*;
+import java.util.ArrayList;
+import lanche.Lanche;
 import pagamento.*;
 import state.*;
 
@@ -17,10 +18,10 @@ import state.*;
 public class Pedido {
 
     private Status estado;
-    ArrayList<Bebida> bebidas;
+    ArrayList<Item> item;
 
     public Pedido() {
-        this.bebidas = new ArrayList();
+        this.item = new ArrayList();
         this.estado = new Aberto(this);
     }
 
@@ -28,9 +29,11 @@ public class Pedido {
         estado.Pagar(p);
     }
 
-    public void fecharPedido() {
-        //Pagamento p = new Dinheiro();
+    public void pago() {
+        item.clear();
+    }
 
+    public void fecharPedido() {
         estado.fecharPedido();
     }
 
@@ -38,16 +41,34 @@ public class Pedido {
         estado.abrirPedido();
     }
 
+    public boolean verificaPedido() {
+        boolean l = false;
+        boolean b = false;
+        boolean t = false;
+        for (Item item1 : item) {
+            if (item1 instanceof Bebida) {
+                b = true;
+            }
+            if (item1 instanceof Lanche) {
+                l = true;
+            }
+            if (((l == true) && (b == true))) {
+                t = true;
+            }
+        }
+        return t;
+    }
+
     public float caculaTotal() {
         float valorTotal = 0;
-        for (Bebida bebida : bebidas) {
-            valorTotal += bebida.custo();
+        for (Item item1 : item) {
+            valorTotal += item1.custo();
         }
         return valorTotal;
     }
 
-    public void addItem(Bebida b) {
-        estado.addItem(b);
+    public void addItem(Item i) {
+        estado.addItem(i);
     }
 
     public Status getEstado() {
@@ -58,12 +79,11 @@ public class Pedido {
         this.estado = estado;
     }
 
-    public ArrayList<Bebida> getBebidas() {
-        return bebidas;
+    public ArrayList<Item> getItem() {
+        return item;
     }
 
-    public void setBebidas(ArrayList<Bebida> bebidas) {
-        this.bebidas = bebidas;
+    public void setItem(ArrayList<Item> item) {
+        this.item = item;
     }
-
 }

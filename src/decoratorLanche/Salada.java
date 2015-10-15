@@ -11,7 +11,8 @@ import lanche.*;
  *
  * @author leona
  */
-public class Salada extends Decorator{
+public class Salada extends DecoratorLanche {
+
     Lanche x;
 
     public Salada(Lanche x) {
@@ -20,12 +21,16 @@ public class Salada extends Decorator{
 
     @Override
     public String getNome() {
-        if(x instanceof XSalada){return (this.x.getNome()+", com mais Salada");}
-        else return (this.x.getNome()+", com Salada");
+        if (x instanceof XSalada) {
+            return (this.x.getNome() + ", com mais Salada");
+        } else {
+            return (this.x.getNome() + ", com Salada");
+        }
     }
 
     @Override
-    public double custo() {
-        return (this.x.custo()+0.50);
+    public float custo() {
+        return (this.x.custo() + 0.50f);
     }
+
 }

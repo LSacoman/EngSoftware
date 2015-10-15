@@ -3,18 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package decorator;
+package decoratorLanche;
 
-import bebida.*;
+import decorator.Decorador;
+import lanche.Lanche;
 
 /**
  *
  * @author leona
  */
-public abstract class Decoradores extends Bebida {
+public abstract class DecoratorLanche extends Lanche implements Decorador {
 
-    private Bebida b;
-
-    @Override
     public abstract String getNome();
 }

@@ -11,7 +11,7 @@ import bebida.*;
  *
  * @author leona
  */
-public class Canela extends Decoradores {
+public class Canela extends DecoradorBebida {
 
     Bebida b;
 

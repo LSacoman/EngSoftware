@@ -10,5 +10,5 @@ package lanche;
  * @author leona
  */
 public class XTudo {
-    
+
 }

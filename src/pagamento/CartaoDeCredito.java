@@ -12,7 +12,7 @@ package pagamento;
 public class CartaoDeCredito implements Pagamento {
 
     @Override
-    public void Pàgar() {
+    public void Pagar() {
         System.out.println("Inserindo o cartao...");
         System.out.println("Digitando o valor...");
         System.out.println("Digitando a senha...");

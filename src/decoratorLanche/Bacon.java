@@ -11,19 +11,25 @@ import lanche.*;
  *
  * @author leona
  */
-public class Bacon extends Decorator{
+public class Bacon extends DecoratorLanche {
+
     Lanche x;
-    public Bacon(Lanche x){
-        this.x=x;
+
+    public Bacon(Lanche x) {
+        this.x = x;
     }
+
     @Override
-    public double custo() {
-        return (x.custo()+1.5);
+    public float custo() {
+        return (x.custo() + 1.5f);
     }
 
     @Override
     public String getNome() {
-        if(x instanceof XBacon){return (this.x.getNome()+", com mais Bacon");}
-        else return (this.x.getNome()+", com Bacon");
+        if (x instanceof XBacon) {
+            return (this.x.getNome() + ", com mais Bacon");
+        } else {
+            return (this.x.getNome() + ", com Bacon");
+        }
     }
 }

@@ -9,15 +9,17 @@ package lanche;
  *
  * @author leona
  */
-public class XCalabresa extends Lanche{
+public class XCalabresa extends Lanche {
+
     public XCalabresa() {
         this.setNome("Xcalabresa");
     }
 
     @Override
-    public double custo() {
-        return 8.0;
+    public float custo() {
+        return 8.0f;
     }
+
     @Override
     public void adicionarCondimento() {
         System.out.println("Passando maionese ");

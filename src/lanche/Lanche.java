@@ -5,11 +5,14 @@
  */
 package lanche;
 
+import pedido.Item;
+
 /**
  *
  * @author leona
  */
-public abstract class Lanche {
+public abstract class Lanche extends Item {
+
     private String nome;
 
     public String getNome() {
@@ -19,19 +22,28 @@ public abstract class Lanche {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public abstract double custo();
-    public void cortaPao(){
+
+    public abstract float custo();
+
+    public void cortaPao() {
 
     }
-    public void adicionarCondimento(){}
-    public void adicionarRecheioPrincipal(){}
-    public void prensar(){
+
+    public void adicionarCondimento() {
+    }
+
+    public void adicionarRecheioPrincipal() {
+    }
+
+    public void prensar() {
 
     }
-    public void servir(){
+
+    public void servir() {
 
     }
-    public final void prepararLanche(){
+
+    public final void prepararLanche() {
         this.cortaPao();
         this.adicionarCondimento();
         this.adicionarRecheioPrincipal();

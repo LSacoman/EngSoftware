@@ -23,40 +23,25 @@ public class App {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Bebida cafe = new Cafe();
-        
-        /*
-        cafe = new Chantilly(cafe);
-        Pagamento pagamento = new CartaoDeCredito();
         Pedido p = new Pedido();
-
+        Pagamento pagamento = new CartaoDeCredito();
+        Item cafe = new Cafe();
+        cafe = new Chantilly(cafe);
         p.addItem(cafe);
+        /*Lanche xS = new XSalada();
+         p.addItem(xS);*/
         System.out.println("O valor total é: " + p.caculaTotal());
-
-        System.out.println("fechando o pedido");
         p.fecharPedido();
-        p.addItem(cafe);
-        System.out.println("O valor total é: " + p.caculaTotal());
+        p.pagar(pagamento);
 
-        System.out.println("abrindo o pedido");
-        p.abrirPedido();
-        p.addItem(cafe);
-        System.out.println("O valor total é: " + p.caculaTotal());
+        System.out.println("\n\n\n");
 
+        Lanche xC = new XCalabresa();
+        xC = new Calabresa(xC);
+        p.addItem(xC);
+        System.out.println(" Custo: R$" + p.caculaTotal());
         p.fecharPedido();
-        p.pagar(pagamento);*/
-        
-        Lanche x = new XSalada();
-        x.prepararLanche();
-        System.out.println("Nome: " + x.getNome() + " Custo: R$" + x.custo());
-        x = new Bacon(x);
-        System.out.println("Nome: "+x.getNome()+" Custo: R$"+x.custo());
-        System.out.println("------- Fechado!----------");
-        Lanche s = new XCalabresa();
-        s.prepararLanche();
-        System.out.println("Nome: " + s.getNome() + " Custo: R$" + s.custo());
-        s = new Calabresa(s);
-        System.out.println("Nome: " + s.getNome() + " Custo: R$" + s.custo());
+        p.pagar(pagamento);
     }
 
 }

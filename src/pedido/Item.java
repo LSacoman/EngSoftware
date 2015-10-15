@@ -5,20 +5,13 @@
  */
 package pedido;
 
-import bebida.*;
-import pagamento.*;
-
 /**
  *
  * @author leona
  */
-public interface Status {
+public abstract class Item {
 
-    public abstract void addItem(Item i);
+    public abstract float custo();
 
-    public abstract void fecharPedido();
-
-    public abstract void abrirPedido();
-
-    public abstract void Pagar(Pagamento p);
+    public abstract String getNome();
 }

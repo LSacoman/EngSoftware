@@ -12,7 +12,7 @@ package pagamento;
 public class Dinheiro implements Pagamento {
 
     @Override
-    public void Pàgar() {
+    public void Pagar() {
         System.out.println("Recebendo o dinheiro...");
         System.out.println("Contando as cedulas...");
         System.out.println("Confirmando o pagamento!");

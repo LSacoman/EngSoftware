@@ -6,16 +6,17 @@
 package decorator;
 
 import bebida.*;
+import pedido.Item;
 
 /**
  *
  * @author leona
  */
-public class Chantilly extends Decoradores {
+public class Chantilly extends DecoradorBebida {
 
-    Bebida b;
+    Item b;
 
-    public Chantilly(Bebida b) {
+    public Chantilly(Item b) {
         this.b = b;
     }
 

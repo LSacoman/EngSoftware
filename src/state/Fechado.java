@@ -23,7 +23,7 @@ public class Fechado implements Status {
     }
 
     @Override
-    public void addItem(Bebida b) {
+    public void addItem(Item i) {
         System.out.println("Seu pedido esta fechado. Item nao pode ser adicionado");
     }
 
@@ -39,8 +39,8 @@ public class Fechado implements Status {
     }
 
     @Override
-    public void Pagar(Pagamento p) {
-        pgto = p;
-        pgto.Pàgar();
+    public void Pagar(Pagamento pgto) {
+        pgto.Pagar();
+        p.pago();
     }
 }

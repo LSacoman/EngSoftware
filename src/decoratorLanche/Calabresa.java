@@ -11,7 +11,8 @@ import lanche.*;
  *
  * @author leona
  */
-public class Calabresa extends Decorator{
+public class Calabresa extends DecoratorLanche {
+
     Lanche x;
 
     public Calabresa(Lanche x) {
@@ -20,12 +21,15 @@ public class Calabresa extends Decorator{
 
     @Override
     public String getNome() {
-        if(x instanceof XCalabresa){return (this.x.getNome()+", com mais Calabresa");}
-        else return (this.x.getNome()+", com Calabresa");
+        if (x instanceof XCalabresa) {
+            return (this.x.getNome() + ", com mais Calabresa");
+        } else {
+            return (this.x.getNome() + ", com Calabresa");
+        }
     }
 
     @Override
-    public double custo() {
-        return (this.x.custo()+1.5);
+    public float custo() {
+        return (this.x.custo() + 1.5f);
     }
 }

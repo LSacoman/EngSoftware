@@ -9,13 +9,15 @@ package lanche;
  *
  * @author leona
  */
-public class XSalada extends Lanche{
-    public XSalada(){
+public class XSalada extends Lanche {
+
+    public XSalada() {
         this.setNome("Xsalada");
     }
+
     @Override
-    public double custo() {
-        return 6.00;
+    public float custo() {
+        return 6.00f;
     }
 
     @Override

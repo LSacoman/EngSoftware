@@ -6,6 +6,7 @@
 package state;
 
 import bebida.*;
+import lanche.Lanche;
 import pagamento.*;
 import pedido.*;
 
@@ -25,15 +26,28 @@ public class Aberto implements Status {
     }
 
     @Override
-    public void addItem(Bebida b) {
-        System.out.println("Adicionando ao seu pedido " + b.getNome());
-        p.getBebidas().add(b);
+    public void addItem(Item i) {
+        if (i instanceof Bebida) {
+            Bebida b = (Bebida) i;
+            System.out.println("Adicionando ao seu pedido(bebida) " + b.getNome());
+            p.getItem().add(b);
+        }
+        if (i instanceof Lanche) {
+            Lanche l = (Lanche) i;
+            l.prepararLanche();
+            System.out.println("Adicionando ao seu pedido(lanche) " + l.getNome());
+            p.getItem().add(l);
+        }
     }
 
     @Override
     public void fecharPedido() {
-        System.out.println("ok, vamos lá. Fecharemos o seu pedido.");
-        p.setEstado(new Fechado(p));
+        if (p.verificaPedido()) {
+            p.setEstado(new Fechado(p));
+            System.out.println("ok, vamos lá. Fecharemos o seu pedido.");
+        } else {
+            System.out.println("O seu pedido nao tem 1 lanche e 1 bebida. Não é possivel fechar o pedido.");
+        }
     }
 
     @Override
@@ -46,5 +60,4 @@ public class Aberto implements Status {
         System.out.println("Seu pedido esta aberto."
                 + " Nao é possivel fazer o pagamento");
     }
-
 }

@@ -5,11 +5,13 @@
  */
 package bebida;
 
+import pedido.Item;
+
 /**
  *
  * @author leona
  */
-public abstract class Bebida {
+public abstract class Bebida extends Item{
 
     private String nome;
 
