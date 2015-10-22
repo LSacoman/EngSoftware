@@ -5,7 +5,7 @@
  */
 package pedido;
 
-import bebida.*;
+import itensDeVenda.ItensDeVenda;
 import pagamento.*;
 
 /**
@@ -14,7 +14,7 @@ import pagamento.*;
  */
 public interface Status {
 
-    public abstract void addItem(Item i);
+    public abstract void addItem(ItensDeVenda i);
 
     public abstract void fecharPedido();
 

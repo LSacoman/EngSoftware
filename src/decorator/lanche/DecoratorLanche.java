@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lanche;
+package decorator.lanche;
+
+import decorator.Decorador;
+import itensDeVenda.lanche.Lanche;
 
 /**
  *
  * @author leona
  */
-public class XBacon extends Lanche {
+public abstract class DecoratorLanche extends Lanche implements Decorador {
 
-    @Override
-    public float custo() {
-        return 0f;
-
-    }
+    public abstract String getNome();
 }

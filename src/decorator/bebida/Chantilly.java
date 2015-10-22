@@ -3,30 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package decorator;
+package decorator.bebida;
 
-import bebida.*;
+import itensDeVenda.ItensDeVenda;
 
 /**
  *
  * @author leona
  */
-public class Canela extends DecoradorBebida {
+public class Chantilly extends DecoradorBebida {
 
-    Bebida b;
+    ItensDeVenda b;
 
-    public Canela(Bebida b) {
+    public Chantilly(ItensDeVenda b) {
         this.b = b;
     }
 
     @Override
     public float custo() {
-        return b.custo() + 0.25f;
+        return b.custo() + 0.5f;
     }
 
     @Override
     public String getNome() {
-        return b.getNome() + " com Canela";
+        return b.getNome() + " com Chantilly";
     }
-
 }

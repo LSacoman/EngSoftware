@@ -5,8 +5,9 @@
  */
 package state;
 
-import bebida.*;
-import lanche.Lanche;
+import itensDeVenda.bebida.Bebida;
+import itensDeVenda.ItensDeVenda;
+import itensDeVenda.lanche.Lanche;
 import pagamento.*;
 import pedido.*;
 
@@ -18,15 +19,12 @@ public class Aberto implements Status {
 
     Pedido p;
 
-    public Aberto() {
-    }
-
     public Aberto(Pedido p) {
         this.p = p;
     }
 
     @Override
-    public void addItem(Item i) {
+    public void addItem(ItensDeVenda i) {
         if (i instanceof Bebida) {
             Bebida b = (Bebida) i;
             System.out.println("Adicionando ao seu pedido(bebida) " + b.getNome());

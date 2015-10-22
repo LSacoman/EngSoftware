@@ -5,23 +5,30 @@
  */
 package pedido;
 
-import bebida.*;
+import itensDeVenda.bebida.Bebida;
+import itensDeVenda.ItensDeVenda;
 import java.util.ArrayList;
-import lanche.Lanche;
+import itensDeVenda.lanche.Lanche;
+import modelo.Pessoa;
+import observer.Observer;
+import observer.Subject;
 import pagamento.*;
+import proxy.IPedido;
 import state.*;
 
 /**
  *
  * @author leona
  */
-public class Pedido {
+public class Pedido implements Subject, IPedido{
 
     private Status estado;
-    ArrayList<Item> item;
+    ArrayList<ItensDeVenda> item;
+    private ArrayList<Observer> observadores;
 
     public Pedido() {
-        this.item = new ArrayList();
+        this.item = new ArrayList<>();
+        this.observadores = new ArrayList<>();
         this.estado = new Aberto(this);
     }
 
@@ -45,7 +52,7 @@ public class Pedido {
         boolean l = false;
         boolean b = false;
         boolean t = false;
-        for (Item item1 : item) {
+        for (ItensDeVenda item1 : item) {
             if (item1 instanceof Bebida) {
                 b = true;
             }
@@ -61,13 +68,13 @@ public class Pedido {
 
     public float calculaTotal() {
         float valorTotal = 0;
-        for (Item item1 : item) {
+        for (ItensDeVenda item1 : item) {
             valorTotal += item1.custo();
         }
         return valorTotal;
     }
 
-    public void addItem(Item i) {
+    public void addItem(ItensDeVenda i) {
         estado.addItem(i);
     }
 
@@ -79,11 +86,29 @@ public class Pedido {
         this.estado = estado;
     }
 
-    public ArrayList<Item> getItem() {
+    public ArrayList<ItensDeVenda> getItem() {
         return item;
     }
 
-    public void setItem(ArrayList<Item> item) {
+    public void setItem(ArrayList<ItensDeVenda> item) {
         this.item = item;
     }
+
+    @Override
+    public void addObservador(Pessoa p) {
+        observadores.add(p);
+    }
+
+    @Override
+    public void removeObservador(Pessoa p) {
+        observadores.remove(p);
+    }
+
+    @Override
+    public void notificarTodos() {
+        for (Observer observador : observadores) {
+            observador.notificar();
+        }
+    }
+
 }

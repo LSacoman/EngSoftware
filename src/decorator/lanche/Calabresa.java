@@ -3,34 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package decoratorLanche;
+package decorator.lanche;
 
-import lanche.*;
+import itensDeVenda.lanche.Lanche;
+import itensDeVenda.lanche.XCalabresa;
 
 /**
  *
  * @author leona
  */
-public class Salada extends DecoratorLanche {
+public class Calabresa extends DecoratorLanche {
 
     Lanche x;
 
-    public Salada(Lanche x) {
+    public Calabresa(Lanche x) {
         this.x = x;
     }
 
     @Override
     public String getNome() {
-        if (x instanceof XSalada) {
-            return (this.x.getNome() + ", com mais Salada");
+        if (x instanceof XCalabresa) {
+            return (this.x.getNome() + ", com mais Calabresa");
         } else {
-            return (this.x.getNome() + ", com Salada");
+            return (this.x.getNome() + ", com Calabresa");
         }
     }
 
     @Override
     public float custo() {
-        return (this.x.custo() + 0.50f);
+        return (this.x.custo() + 1.5f);
     }
-
 }

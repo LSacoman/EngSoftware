@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pedido;
+package observer;
 
 /**
  *
- * @author leona
+ * @author UTFPR
  */
-public abstract class Item {
-
-    public abstract float custo();
-
-    public abstract String getNome();
+public interface Observer {
+    public void notificar();
 }

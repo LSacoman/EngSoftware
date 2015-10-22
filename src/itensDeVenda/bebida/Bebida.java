@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bebida;
+package itensDeVenda.bebida;
 
-import pedido.Item;
+import itensDeVenda.ItensDeVenda;
 
 /**
  *
  * @author leona
  */
-public abstract class Bebida extends Item{
+public abstract class Bebida extends ItensDeVenda{
 
     private String nome;
 

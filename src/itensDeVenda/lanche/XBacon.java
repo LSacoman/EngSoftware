@@ -3,21 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bebida;
+package itensDeVenda.lanche;
 
 /**
  *
  * @author leona
  */
-public class Cafe extends Bebida {
-
-    public Cafe() {
-        setNome("cafe");
-    }
+public class XBacon extends Lanche {
 
     @Override
     public float custo() {
-        return 1.5f;
-    }
+        return 0f;
 
+    }
 }

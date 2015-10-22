@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lanche;
+package itensDeVenda.lanche;
 
-import pedido.Item;
+import itensDeVenda.ItensDeVenda;
 
 /**
  *
  * @author leona
  */
-public abstract class Lanche extends Item {
+public abstract class Lanche extends ItensDeVenda {
 
     private String nome;
 

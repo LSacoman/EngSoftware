@@ -3,41 +3,49 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Proxy;
+package proxy;
 
 import modelo.*;
 import pagamento.Pagamento;
-import pedido.Item;
+import itensDeVenda.ItensDeVenda;
+import pedido.Pedido;
 
 /**
  *
  * @author leona
  */
-public class FolderProxy implements IFolder{
+public class PedidoProxy implements IPedido{
 
     Pessoa p;
-    Folder f = new Folder();
+    Pedido pe;
+    Pessoa garcom;
+    Pessoa cozinheiro;
 
-    private static FolderProxy instance;
+    private static PedidoProxy instance;
 
-    public FolderProxy() {
+    public PedidoProxy(Pessoa garcom, Pessoa cozinheiro) {
+        this.garcom = garcom;
+        this.cozinheiro = cozinheiro;
+        pe = new Pedido();
     }
 
-    public static FolderProxy getInstance() {
+  /*  public static FolderProxy getInstance() {
         if (instance == null) {
             instance = new FolderProxy();
         }
         return instance;
-    }
+    }*/
 
     public void setP(Pessoa p) {
         this.p = p;
     }
 
-    @Override
-    public void fazerPedido(Item i) {
+    public void addItem(ItensDeVenda i) {
         if ((p instanceof Garcom)) {
-            f.fazerPedido(i);
+            pe.addItem(i);
+            pe.addObservador(cozinheiro);
+            pe.addObservador(garcom);
+            pe.notificarTodos();
         } else {
             System.out.println(":: Warning :: Acess Denied! ::");
         }
@@ -45,22 +53,22 @@ public class FolderProxy implements IFolder{
 
     @Override
     public void fecharPedido() {
-        f.fecharPedido();
+        pe.fecharPedido();
     }
 
     @Override
     public void pagar(Pagamento pgto) {
-        f.pagar(pgto);
+        pe.pagar(pgto);
     }
 
     @Override
     public void abrirPedido() {
-        f.abrirPedido();
+        pe.abrirPedido();
     }
 
     @Override
     public float calculaTotal() {
-        return f.calculaTotal();
+        return pe.calculaTotal();
     }
     
 }

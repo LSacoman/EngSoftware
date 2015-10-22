@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Proxy;
+package proxy;
 
+import itensDeVenda.ItensDeVenda;
 import pagamento.Pagamento;
 import pedido.*;
 
@@ -12,8 +13,8 @@ import pedido.*;
  *
  * @author leona
  */
-public interface IFolder {
-    public abstract void fazerPedido(Item i);
+public interface IPedido {
+    public abstract void addItem(ItensDeVenda i);
     public abstract void fecharPedido();
     public abstract void pagar(Pagamento pgto);
     public abstract void abrirPedido();

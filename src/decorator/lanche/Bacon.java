@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package decoratorLanche;
+package decorator.lanche;
 
-import lanche.*;
+import itensDeVenda.lanche.Lanche;
+import itensDeVenda.lanche.XBacon;
 
 /**
  *

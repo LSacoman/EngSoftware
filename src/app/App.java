@@ -5,11 +5,14 @@
  */
 package app;
 
-import Proxy.*;
-import bebida.*;
+import proxy.PedidoProxy;
+import itensDeVenda.bebida.Cafe;
+import itensDeVenda.bebida.Bebida;
+import itensDeVenda.lanche.Lanche;
+import itensDeVenda.lanche.XCalabresa;
+import decorator.bebida.Chantilly;
+import decorator.lanche.Calabresa;
 import decorator.*;
-import decoratorLanche.*;
-import lanche.*;
 import modelo.*;
 import pagamento.*;
 /**
@@ -25,11 +28,12 @@ public class App {
         // TODO code application logic here     
         Pessoa garcom = new Garcom("root", "123");
         Pessoa gerente = new Gerente("joao", "123");
+        Pessoa cozinheiro = new Cozinheiro("jose", "12364567");
         Pagamento pagamento = new CartaoDeCredito();
 
-        FolderProxy fp = FolderProxy.getInstance();
+        PedidoProxy pp = new PedidoProxy(garcom, cozinheiro);
 
-        fp.setP(gerente);
+        pp.setP(gerente);
 
         Bebida cafe = new Cafe();
         cafe = new Chantilly(cafe);
@@ -37,33 +41,33 @@ public class App {
         Lanche xC = new XCalabresa();
         xC = new Calabresa(xC);
 
-        fp.fazerPedido(xC);
+        pp.addItem(xC);
         System.out.println("::NAO VAI FAZER PEDIDO::");
 
-        fp.fecharPedido();
+        pp.fecharPedido();
         System.out.println("::NAO VAI FECHAR::");
 
-        fp.setP(garcom);
-        fp.fazerPedido(xC);
+        pp.setP(garcom);
+        pp.addItem(xC);
         System.out.println("::Adicionou XCalabresa + calabresa::");
-        System.out.println(" Custo: R$" + fp.calculaTotal());
+        System.out.println(" Custo: R$" + pp.calculaTotal());
         //Lanche xS = new XSalada();
         //fp.fazerPedido(xS);
-        fp.fecharPedido();
+        pp.fecharPedido();
         System.out.println("::NAO VAI FECHAR::");
-        fp.fazerPedido(cafe);
+        pp.addItem(cafe);
         System.out.println("::Adicionou o Cafe::");
-        System.out.println(" Custo: R$" + fp.calculaTotal());
-        fp.fecharPedido();
-        fp.abrirPedido();
-        fp.fecharPedido();
+        System.out.println(" Custo: R$" + pp.calculaTotal());
+        pp.fecharPedido();
+        pp.abrirPedido();
+        pp.fecharPedido();
         System.out.println("::FECHOU O PEDIDO::");
-        fp.pagar(pagamento);
+        pp.pagar(pagamento);
         System.out.println("PAGOU");
-        fp.abrirPedido();
-        fp.fazerPedido(cafe);
+        pp.abrirPedido();
+        pp.addItem(cafe);
         System.out.println("::Adicionou o Cafe::");
-        System.out.println(" Custo: R$" + fp.calculaTotal());
+        System.out.println(" Custo: R$" + pp.calculaTotal());
     }
 
 }

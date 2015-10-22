@@ -3,21 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bebida;
+package decorator.bebida;
+
+import itensDeVenda.bebida.Bebida;
+import decorator.Decorador;
 
 /**
  *
  * @author leona
  */
-public class Leite extends Bebida {
+public abstract class DecoradorBebida extends Bebida implements Decorador {
 
-    public Leite() {
-        setNome("leite");
-    }
+    private Bebida b;
 
     @Override
-    public float custo() {
-        return 1.0f;
-    }
-
+    public abstract String getNome();
 }
